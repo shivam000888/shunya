@@ -46,61 +46,67 @@
             <div class="carousel-track">
                 <!-- Slide 1 -->
                 <div class="carousel-slide active">
-                    <div class="slide-image">🎨</div>
-                    <div class="slide-content">
-                        <h3>Brand Identity</h3>
-                        <p>Complete logo design and brand guidelines for businesses.</p>
-                        <a href="#" class="slide-btn">View Project</a>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">🎨</div>
+                        <div class="portfolio-info">
+                            <h3>Brand Identity</h3>
+                            <p>Complete logo design and brand guidelines.</p>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Slide 2 -->
                 <div class="carousel-slide">
-                    <div class="slide-image">📱</div>
-                    <div class="slide-content">
-                        <h3>App UI Design</h3>
-                        <p>Modern and user-friendly mobile application interfaces.</p>
-                        <a href="#" class="slide-btn">View Project</a>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">📱</div>
+                        <div class="portfolio-info">
+                            <h3>App UI Design</h3>
+                            <p>Modern mobile application interface.</p>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Slide 3 -->
                 <div class="carousel-slide">
-                    <div class="slide-image">📰</div>
-                    <div class="slide-content">
-                        <h3>Print Design</h3>
-                        <p>Eye-catching brochures, flyers, and marketing materials.</p>
-                        <a href="#" class="slide-btn">View Project</a>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">📰</div>
+                        <div class="portfolio-info">
+                            <h3>Print Design</h3>
+                            <p>Brochures, flyers and marketing materials.</p>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Slide 4 -->
                 <div class="carousel-slide">
-                    <div class="slide-image">🎯</div>
-                    <div class="slide-content">
-                        <h3>Logo Design</h3>
-                        <p>Memorable and impactful logos for startups and brands.</p>
-                        <a href="#" class="slide-btn">View Project</a>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">🎯</div>
+                        <div class="portfolio-info">
+                            <h3>Logo Design</h3>
+                            <p>Memorable logos for businesses.</p>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Slide 5 -->
                 <div class="carousel-slide">
-                    <div class="slide-image">🖼️</div>
-                    <div class="slide-content">
-                        <h3>Social Media Graphics</h3>
-                        <p>Engaging visual content for Instagram, Facebook, and more.</p>
-                        <a href="#" class="slide-btn">View Project</a>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">🖼️</div>
+                        <div class="portfolio-info">
+                            <h3>Social Media</h3>
+                            <p>Engaging visual content for social platforms.</p>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Slide 6 -->
                 <div class="carousel-slide">
-                    <div class="slide-image">📦</div>
-                    <div class="slide-content">
-                        <h3>Packaging Design</h3>
-                        <p>Creative packaging solutions that stand out on shelves.</p>
-                        <a href="#" class="slide-btn">View Project</a>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">📦</div>
+                        <div class="portfolio-info">
+                            <h3>Packaging Design</h3>
+                            <p>Creative packaging solutions.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -109,7 +115,7 @@
             <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
             
-            <!-- Dots -->
+            <!-- Dots - Click to jump -->
             <div class="carousel-dots">
                 <span class="dot active" onclick="currentSlide(1)"></span>
                 <span class="dot" onclick="currentSlide(2)"></span>
@@ -175,7 +181,7 @@
         function startAutoPlay() {
             slideInterval = setInterval(() => {
                 moveSlide(1);
-            }, 4000); // Change every 4 seconds
+            }, 4000);
         }
         
         function moveSlide(n) {
@@ -212,7 +218,6 @@
             dots[slideIndex-1].classList.add("active");
         }
         
-        // Start auto-play when page loads
         startAutoPlay();
     </script>
 </body>

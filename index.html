@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shunya | Graphic Designer</title>
-    <meta name="google-site-verification" content="lP6TJcAp5MTrBQ_ABSJm9wR9J5tiklB7LnIdPg7tlso" />
+    <title>Shivam Vhatkar | Graphic Designer</title>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,29 +38,85 @@
         </div>
     </section>
 
+    <!-- Carousel Section -->
     <section id="portfolio" class="portfolio">
         <h2 class="section-title">My <span>Portfolio</span></h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <div class="portfolio-image">🎨</div>
-                <div class="portfolio-info">
-                    <h3>Brand Identity</h3>
-                    <p>Logo and brand guidelines.</p>
+        
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- Slide 1 -->
+                <div class="carousel-slide active">
+                    <div class="slide-image">🎨</div>
+                    <div class="slide-content">
+                        <h3>Brand Identity</h3>
+                        <p>Complete logo design and brand guidelines for businesses.</p>
+                        <a href="#" class="slide-btn">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <div class="slide-image">📱</div>
+                    <div class="slide-content">
+                        <h3>App UI Design</h3>
+                        <p>Modern and user-friendly mobile application interfaces.</p>
+                        <a href="#" class="slide-btn">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <div class="slide-image">📰</div>
+                    <div class="slide-content">
+                        <h3>Print Design</h3>
+                        <p>Eye-catching brochures, flyers, and marketing materials.</p>
+                        <a href="#" class="slide-btn">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <div class="slide-image">🎯</div>
+                    <div class="slide-content">
+                        <h3>Logo Design</h3>
+                        <p>Memorable and impactful logos for startups and brands.</p>
+                        <a href="#" class="slide-btn">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 5 -->
+                <div class="carousel-slide">
+                    <div class="slide-image">🖼️</div>
+                    <div class="slide-content">
+                        <h3>Social Media Graphics</h3>
+                        <p>Engaging visual content for Instagram, Facebook, and more.</p>
+                        <a href="#" class="slide-btn">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 6 -->
+                <div class="carousel-slide">
+                    <div class="slide-image">📦</div>
+                    <div class="slide-content">
+                        <h3>Packaging Design</h3>
+                        <p>Creative packaging solutions that stand out on shelves.</p>
+                        <a href="#" class="slide-btn">View Project</a>
+                    </div>
                 </div>
             </div>
-            <div class="portfolio-item">
-                <div class="portfolio-image">📱</div>
-                <div class="portfolio-info">
-                    <h3>App UI Design</h3>
-                    <p>Mobile application interface.</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-image">📰</div>
-                <div class="portfolio-info">
-                    <h3>Print Design</h3>
-                    <p>Brochures and flyers.</p>
-                </div>
+            
+            <!-- Navigation Arrows -->
+            <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
+            
+            <!-- Dots -->
+            <div class="carousel-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
             </div>
         </div>
     </section>
@@ -88,7 +149,6 @@
 
     <section id="contact" class="contact">
         <div class="contact-container">
-            <!-- Left Side - Your Info -->
             <div class="contact-info-left">
                 <h3>Shivam Vhatkar</h3>
                 <p class="contact-detail">📧 shivamvhatkar8@gmail.com</p>
@@ -96,7 +156,6 @@
                 <p class="contact-detail">📍 Maharashtra, Mumbai, Sion - 400017</p>
             </div>
             
-            <!-- Right Side - Get In Touch -->
             <div class="contact-form-right">
                 <h2 class="section-title">Get In <span>Touch</span></h2>
                 <p>Ready to start your next project? Let's create something amazing together!</p>
@@ -107,7 +166,54 @@
     <footer>
         <p>&copy; 2025 Shivam Vhatkar. All rights reserved.</p>
     </footer>
+
+    <script>
+        let slideIndex = 1;
+        let slideInterval;
+        
+        // Auto-play carousel
+        function startAutoPlay() {
+            slideInterval = setInterval(() => {
+                moveSlide(1);
+            }, 4000); // Change every 4 seconds
+        }
+        
+        function moveSlide(n) {
+            showSlides(slideIndex += n);
+            resetTimer();
+        }
+        
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+            resetTimer();
+        }
+        
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startAutoPlay();
+        }
+        
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("carousel-slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].classList.add("active");
+        }
+        
+        // Start auto-play when page loads
+        startAutoPlay();
+    </script>
 </body>
-
 </html>
-

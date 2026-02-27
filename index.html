@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <nav>
         <div class="logo">Shivam<span>.</span></div>
         <ul class="nav-links">
@@ -38,84 +39,78 @@
         </div>
     </section>
 
-    <!-- Carousel Section -->
+    <!-- Portfolio Carousel -->
     <section id="portfolio" class="portfolio">
         <h2 class="section-title">My <span>Portfolio</span></h2>
         
         <div class="carousel-container">
-            <div class="carousel-track">
-                <!-- Slide 1 -->
-                <div class="carousel-slide active">
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">🎨</div>
-                        <div class="portfolio-info">
-                            <h3>Brand Identity</h3>
-                            <p>Complete logo design and brand guidelines.</p>
+            <div class="carousel-wrapper">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">🎨</div>
+                            <div class="portfolio-info">
+                                <h3>Brand Identity</h3>
+                                <p>Complete logo design and brand guidelines.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Slide 2 -->
-                <div class="carousel-slide">
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">📱</div>
-                        <div class="portfolio-info">
-                            <h3>App UI Design</h3>
-                            <p>Modern mobile application interface.</p>
+
+                    <div class="carousel-slide">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">📱</div>
+                            <div class="portfolio-info">
+                                <h3>App UI Design</h3>
+                                <p>Modern mobile application interface.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Slide 3 -->
-                <div class="carousel-slide">
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">📰</div>
-                        <div class="portfolio-info">
-                            <h3>Print Design</h3>
-                            <p>Brochures, flyers and marketing materials.</p>
+
+                    <div class="carousel-slide">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">📰</div>
+                            <div class="portfolio-info">
+                                <h3>Print Design</h3>
+                                <p>Brochures, flyers and marketing materials.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Slide 4 -->
-                <div class="carousel-slide">
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">🎯</div>
-                        <div class="portfolio-info">
-                            <h3>Logo Design</h3>
-                            <p>Memorable logos for businesses.</p>
+
+                    <div class="carousel-slide">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">🎯</div>
+                            <div class="portfolio-info">
+                                <h3>Logo Design</h3>
+                                <p>Memorable logos for businesses.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Slide 5 -->
-                <div class="carousel-slide">
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">🖼️</div>
-                        <div class="portfolio-info">
-                            <h3>Social Media</h3>
-                            <p>Engaging visual content for social platforms.</p>
+
+                    <div class="carousel-slide">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">🖼️</div>
+                            <div class="portfolio-info">
+                                <h3>Social Media</h3>
+                                <p>Engaging visual content for social platforms.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Slide 6 -->
-                <div class="carousel-slide">
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">📦</div>
-                        <div class="portfolio-info">
-                            <h3>Packaging Design</h3>
-                            <p>Creative packaging solutions.</p>
+
+                    <div class="carousel-slide">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">📦</div>
+                            <div class="portfolio-info">
+                                <h3>Packaging Design</h3>
+                                <p>Creative packaging solutions.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Navigation Arrows -->
+
             <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
-            
-            <!-- Dots - Click to jump -->
+
             <div class="carousel-dots">
                 <span class="dot active" onclick="currentSlide(1)"></span>
                 <span class="dot" onclick="currentSlide(2)"></span>
@@ -170,55 +165,70 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Shivam Vhatkar. All rights reserved.</p>
+        <p>© 2025 Shivam Vhatkar. All rights reserved.</p>
     </footer>
 
     <script>
-        let slideIndex = 1;
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".carousel-slide");
+        const dots = document.querySelectorAll(".dot");
         let slideInterval;
-        
-        // Auto-play carousel
-        function startAutoPlay() {
-            slideInterval = setInterval(() => {
-                moveSlide(1);
-            }, 4000);
+
+        function showSlides() {
+            const slidesToShow = window.innerWidth > 1024 ? 3 : window.innerWidth > 600 ? 2 : 1;
+            const total = slides.length;
+
+            // Reset visibility
+            slides.forEach(s => s.classList.remove("visible"));
+
+            // Show current group
+            for (let i = 0; i < total; i++) {
+                const pos = (i - slideIndex + total) % total;
+                if (pos < slidesToShow) {
+                    slides[(slideIndex + i) % total].classList.add("visible");
+                }
+            }
+
+            // Slide the track
+            const track = document.getElementById("carouselTrack");
+            const slideWidth = slides[0].getBoundingClientRect().width + 30; // includes gap
+            track.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+
+            // Update dots (highlight roughly center item)
+            dots.forEach(d => d.classList.remove("active"));
+            const centerIndex = Math.min(slideIndex + Math.floor(slidesToShow / 2), total - 1);
+            dots[centerIndex % total].classList.add("active");
         }
-        
+
         function moveSlide(n) {
-            showSlides(slideIndex += n);
+            slideIndex += n;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            showSlides();
             resetTimer();
         }
-        
+
         function currentSlide(n) {
-            showSlides(slideIndex = n);
+            slideIndex = n - 1;
+            showSlides();
             resetTimer();
         }
-        
+
         function resetTimer() {
             clearInterval(slideInterval);
             startAutoPlay();
         }
-        
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("carousel-slide");
-            let dots = document.getElementsByClassName("dot");
-            
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            
-            for (i = 0; i < slides.length; i++) {
-                slides[i].classList.remove("active");
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].classList.remove("active");
-            }
-            
-            slides[slideIndex-1].classList.add("active");
-            dots[slideIndex-1].classList.add("active");
+
+        function startAutoPlay() {
+            slideInterval = setInterval(() => moveSlide(1), 4000);
         }
-        
+
+        // Init
+        showSlides();
         startAutoPlay();
+
+        // Handle resize
+        window.addEventListener('resize', showSlides);
     </script>
 </body>
 </html>

@@ -1,1 +1,224 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Shivam Vhatkar | Graphic Designer</title> <!-- Google Fonts - Inter --> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"> <link rel="stylesheet" href="style.css"> </head> <body> <nav> <div class="logo">Shivam<span>.</span></div> <ul class="nav-links"> <li><a href="#about">About</a></li> <li><a href="#portfolio">Portfolio</a></li> <li><a href="#services">Services</a></li> <li><a href="#contact">Contact</a></li> </ul> </nav> <section class="hero"> <div class="hero-content"> <h1>Shivam Vhatkar</h1> <p>Graphic Designer & Creative Professional</p> <a href="#portfolio" class="btn">View My Work</a> </div> </section> <section id="about" class="about"> <h2 class="section-title">About <span>Me</span></h2> <div class="about-content"> <p>Hi, I'm Shivam Vhatkar, a passionate graphic designer dedicated to bringing creative visions to life. With a keen eye for detail and a love for visual storytelling, I help brands communicate their message through compelling design.</p> </div> </section> <!-- Portfolio Carousel --> <section id="portfolio" class="portfolio"> <h2 class="section-title">My <span>Portfolio</span></h2> <div class="carousel-container"> <div class="carousel-wrapper"> <div class="carousel-track" id="carouselTrack"> <div class="carousel-slide"> <div class="portfolio-item"> <div class="portfolio-image">🎨</div> <div class="portfolio-info"> <h3>Brand Identity</h3> <p>Complete logo design and brand guidelines.</p> </div> </div> </div> <div class="carousel-slide"> <div class="portfolio-item"> <div class="portfolio-image">📱</div> <div class="portfolio-info"> <h3>App UI Design</h3> <p>Modern mobile application interface.</p> </div> </div> </div> <div class="carousel-slide"> <div class="portfolio-item"> <div class="portfolio-image">📰</div> <div class="portfolio-info"> <h3>Print Design</h3> <p>Brochures, flyers and marketing materials.</p> </div> </div> </div> <div class="carousel-slide"> <div class="portfolio-item"> <div class="portfolio-image">🎯</div> <div class="portfolio-info"> <h3>Logo Design</h3> <p>Memorable logos for businesses.</p> </div> </div> </div> <div class="carousel-slide"> <div class="portfolio-item"> <div class="portfolio-image">🖼️</div> <div class="portfolio-info"> <h3>Social Media</h3> <p>Engaging visual content for social platforms.</p> </div> </div> </div> <div class="carousel-slide"> <div class="portfolio-item"> <div class="portfolio-image">📦</div> <div class="portfolio-info"> <h3>Packaging Design</h3> <p>Creative packaging solutions.</p> </div> </div> </div> </div> </div> <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button> <button class="carousel-btn next" onclick="moveSlide(1)">❯</button> <div class="carousel-dots"> <span class="dot active" onclick="currentSlide(1)"></span> <span class="dot" onclick="currentSlide(2)"></span> <span class="dot" onclick="currentSlide(3)"></span> <span class="dot" onclick="currentSlide(4)"></span> <span class="dot" onclick="currentSlide(5)"></span> <span class="dot" onclick="currentSlide(6)"></span> </div> </div> </section> <section id="services" class="services"> <h2 class="section-title">My <span>Services</span></h2> <div class="services-grid"> <div class="service-card"> <div class="service-icon">✏️</div> <h3>Logo Design</h3> <p>Unique logos for your brand.</p> </div> <div class="service-card"> <div class="service-icon">🎨</div> <h3>Brand Identity</h3> <p>Complete brand development.</p> </div> <div class="service-card"> <div class="service-icon">📱</div> <h3>UI/UX Design</h3> <p>Web and app design.</p> </div> <div class="service-card"> <div class="service-icon">🖥️</div> <h3>Print Design</h3> <p>Brochures and cards.</p> </div> </div> </section> <section id="contact" class="contact"> <div class="contact-container"> <div class="contact-info-left"> <h3>Shivam Vhatkar</h3> <p class="contact-detail">📧 shivamvhatkar8@gmail.com</p> <p class="contact-detail">📱 +91 7039915132</p> <p class="contact-detail">📍 Maharashtra, Mumbai, Sion - 400017</p> </div> <div class="contact-form-right"> <h2 class="section-title">Get In <span>Touch</span></h2> <p>Ready to start your next project? Let's create something amazing together!</p> </div> </div> </section> <footer> <p>© 2025 Shivam Vhatkar. All rights reserved.</p> </footer> <script> let slideIndex = 0; const slides = document.querySelectorAll(".carousel-slide"); const dots = document.querySelectorAll(".dot"); let slideInterval; function showSlides() { const slidesToShow = window.innerWidth > 1024 ? 3 : window.innerWidth > 600 ? 2 : 1; const total = slides.length; // Reset visibility slides.forEach(s => s.classList.remove("visible")); // Show current group for (let i = 0; i < total; i++) { const pos = (i - slideIndex + total) % total; if (pos < slidesToShow) { slides[(slideIndex + i) % total].classList.add("visible"); } } // Slide the track const track = document.getElementById("carouselTrack"); const slideWidth = slides[0].getBoundingClientRect().width + 30; // includes gap track.style.transform = translateX(-${slideIndex * slideWidth}px); // Update dots (highlight roughly center item) dots.forEach(d => d.classList.remove("active")); const centerIndex = Math.min(slideIndex + Math.floor(slidesToShow / 2), total - 1); dots[centerIndex % total].classList.add("active"); } function moveSlide(n) { slideIndex += n; if (slideIndex < 0) slideIndex = slides.length - 1; if (slideIndex >= slides.length) slideIndex = 0; showSlides(); resetTimer(); } function currentSlide(n) { slideIndex = n - 1; showSlides(); resetTimer(); } function resetTimer() { clearInterval(slideInterval); startAutoPlay(); } function startAutoPlay() { slideInterval = setInterval(() => moveSlide(1), 4000); } // Init showSlides(); startAutoPlay(); // Handle resize window.addEventListener('resize', showSlides); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivam Vhatkar | Graphic Designer</title>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">Shivam<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Shivam Vhatkar</h1>
+            <p>Graphic Designer & Creative Professional</p>
+            <a href="#portfolio" class="btn">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <div class="about-content">
+            <p>Hi, I'm Shivam Vhatkar, a passionate graphic designer dedicated to bringing creative visions to life. With a keen eye for detail and a love for visual storytelling, I help brands communicate their message through compelling design.</p>
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section id="portfolio" class="portfolio">
+        <h2 class="section-title">My <span>Portfolio</span></h2>
+        
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- Slide 1 -->
+                <div class="carousel-slide active">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">🎨</div>
+                        <div class="portfolio-info">
+                            <h3>Brand Identity</h3>
+                            <p>Complete logo design and brand guidelines.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">📱</div>
+                        <div class="portfolio-info">
+                            <h3>App UI Design</h3>
+                            <p>Modern mobile application interface.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">📰</div>
+                        <div class="portfolio-info">
+                            <h3>Print Design</h3>
+                            <p>Brochures, flyers and marketing materials.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">🎯</div>
+                        <div class="portfolio-info">
+                            <h3>Logo Design</h3>
+                            <p>Memorable logos for businesses.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 5 -->
+                <div class="carousel-slide">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">🖼️</div>
+                        <div class="portfolio-info">
+                            <h3>Social Media</h3>
+                            <p>Engaging visual content for social platforms.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 6 -->
+                <div class="carousel-slide">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">📦</div>
+                        <div class="portfolio-info">
+                            <h3>Packaging Design</h3>
+                            <p>Creative packaging solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Arrows -->
+            <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
+            
+            <!-- Dots - Click to jump -->
+            <div class="carousel-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">My <span>Services</span></h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">✏️</div>
+                <h3>Logo Design</h3>
+                <p>Unique logos for your brand.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Brand Identity</h3>
+                <p>Complete brand development.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>UI/UX Design</h3>
+                <p>Web and app design.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🖥️</div>
+                <h3>Print Design</h3>
+                <p>Brochures and cards.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-info-left">
+                <h3>Shivam Vhatkar</h3>
+                <p class="contact-detail">📧 shivamvhatkar8@gmail.com</p>
+                <p class="contact-detail">📱 +91 7039915132</p>
+                <p class="contact-detail">📍 Maharashtra, Mumbai, Sion - 400017</p>
+            </div>
+            
+            <div class="contact-form-right">
+                <h2 class="section-title">Get In <span>Touch</span></h2>
+                <p>Ready to start your next project? Let's create something amazing together!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Shivam Vhatkar. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let slideIndex = 1;
+        let slideInterval;
+        
+        // Auto-play carousel
+        function startAutoPlay() {
+            slideInterval = setInterval(() => {
+                moveSlide(1);
+            }, 4000);
+        }
+        
+        function moveSlide(n) {
+            showSlides(slideIndex += n);
+            resetTimer();
+        }
+        
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+            resetTimer();
+        }
+        
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startAutoPlay();
+        }
+        
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("carousel-slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].classList.add("active");
+        }
+        
+        startAutoPlay();
+    </script>
+</body>
+</html>

@@ -87,6 +87,9 @@ nav {
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 /* Sections */
@@ -123,10 +126,46 @@ section {
     background: var(--light);
 }
 
+/* Header with Add Button */
+.portfolio-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.add-project-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.add-project-btn:hover {
+    transform: scale(1.1);
+    background: #000;
+}
+
+.btn-text {
+    display: none; /* Hidden on small screens, shown via tooltip if needed */
+}
+
+/* Carousel Container */
 .carousel-container {
     position: relative;
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0 auto 4rem auto; /* Added margin bottom to separate from uploaded grid */
 }
 
 .carousel-track {
@@ -151,206 +190,4 @@ section {
 }
 
 .portfolio-item {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.portfolio-image {
-    height: 300px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 5rem;
-}
-
-.portfolio-info {
-    padding: 1.5rem;
-    text-align: center;
-}
-
-.portfolio-info h3 {
-    margin-bottom: 0.5rem;
-    color: var(--primary);
-    font-size: 1.5rem;
-}
-
-.portfolio-info p {
-    color: var(--text-light);
-}
-
-/* Navigation Buttons ❮ ❯ */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 45px;
-    height: 45px;
-    background: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-    transition: all 0.3s ease;
-    color: var(--primary);
-}
-
-.carousel-btn:hover {
-    background: var(--accent-color);
-    color: white;
-}
-
-.prev {
-    left: -22px;
-}
-
-.next {
-    right: -22px;
-}
-
-/* Dots - Click to jump */
-.carousel-dots {
-    text-align: center;
-    margin-top: 1.5rem;
-}
-
-.dot {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background: #ccc;
-    border-radius: 50%;
-    margin: 0 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.dot.active {
-    background: var(--accent-color);
-    transform: scale(1.3);
-}
-
-.dot:hover {
-    background: var(--accent);
-}
-
-/* ============================================
-   SERVICES
-   ============================================ */
-.services {
-    background: white;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.service-card {
-    padding: 2rem;
-    background: var(--light);
-    border-radius: 15px;
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-}
-
-.service-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-/* Contact */
-.contact {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.contact-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 4rem;
-}
-
-.contact-info-left {
-    flex: 1;
-    text-align: left;
-}
-
-.contact-info-left h3 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-}
-
-.contact-detail {
-    font-size: 1.1rem;
-    margin: 1rem 0;
-    opacity: 0.95;
-}
-
-.contact-form-right {
-    flex: 1;
-    text-align: right;
-}
-
-.contact-form-right .section-title {
-    color: white;
-}
-
-.contact-form-right .section-title span {
-    color: white;
-}
-
-/* Footer */
-footer {
-    background: var(--accent-color);
-    color: white;
-    text-align: center;
-    padding: 1.5rem;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
-    
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .carousel-btn {
-        width: 38px;
-        height: 38px;
-        font-size: 1rem;
-    }
-    
-    .prev { left: 10px; }
-    .next { right: 10px; }
-    
-    .contact-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .contact-info-left {
-        text-align: center;
-    }
-    
-    .contact-form-right {
-        text-align: center;
-    }
-}
-
+    background:

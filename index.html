@@ -38,9 +38,13 @@
         </div>
     </section>
 
-    <!-- Carousel Section -->
+    <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
-        <h2 class="section-title">My <span>Portfolio</span></h2>
+        <div class="portfolio-header">
+            <h2 class="section-title">My <span>Portfolio</span></h2>
+            <!-- Upload Button -->
+            <button class="add-project-btn" onclick="openModal()">+ <span class="btn-text">Add New Project</span></button>
+        </div>
         
         <div class="carousel-container">
             <div class="carousel-track">
@@ -69,7 +73,7 @@
                 <!-- Slide 3 -->
                 <div class="carousel-slide">
                     <div class="portfolio-item">
-                        <div class="portfolio-image">📰</div>
+="portfolio-image">                        <div class📰</div>
                         <div class="portfolio-info">
                             <h3>Print Design</h3>
                             <p>Brochures, flyers and marketing materials.</p>
@@ -111,11 +115,10 @@
                 </div>
             </div>
             
-            <!-- Navigation Arrows -->
+            <!-- Carousel Navigation -->
             <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
             
-            <!-- Dots - Click to jump -->
             <div class="carousel-dots">
                 <span class="dot active" onclick="currentSlide(1)"></span>
                 <span class="dot" onclick="currentSlide(2)"></span>
@@ -124,6 +127,11 @@
                 <span class="dot" onclick="currentSlide(5)"></span>
                 <span class="dot" onclick="currentSlide(6)"></span>
             </div>
+        </div>
+
+        <!-- Uploaded Projects Grid -->
+        <div class="uploaded-projects-grid" id="uploadedProjectsGrid">
+            <!-- New uploaded projects will appear here dynamically -->
         </div>
     </section>
 
@@ -173,15 +181,36 @@
         <p>&copy; 2025 Shivam Vhatkar. All rights reserved.</p>
     </footer>
 
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Upload New Project</h3>
+            <form id="uploadForm">
+                <div class="form-group">
+                    <label>Project Title</label>
+                    <input type="text" id="projectTitle" placeholder="e.g., Nature Flyer" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" id="projectDesc" placeholder="Short description" required>
+                </div>
+                <div class="form-group">
+                    <label>Choose Image</label>
+                    <input type="file" id="projectImage" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn upload-btn">Upload Project</button>
+            </form>
+        </div>
+    </div>
+
     <script>
+        // --- Carousel Logic ---
         let slideIndex = 1;
         let slideInterval;
         
-        // Auto-play carousel
         function startAutoPlay() {
-            slideInterval = setInterval(() => {
-                moveSlide(1);
-            }, 4000);
+            slideInterval = setInterval(() => { moveSlide(1); }, 4000);
         }
         
         function moveSlide(n) {
@@ -219,8 +248,66 @@
         }
         
         startAutoPlay();
+
+        // --- Upload Modal Logic ---
+        const modal = document.getElementById("uploadModal");
+
+        function openModal() {
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // Close modal if clicking outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Handle Form Submission
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('projectTitle').value;
+            const desc = document.getElementById('projectDesc').value;
+            const fileInput = document.getElementById('projectImage');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const imgSrc = e.target.result;
+                    addProjectToGrid(title, desc, imgSrc);
+                    
+                    // Reset and close
+                    document.getElementById('uploadForm').reset();
+                    closeModal();
+                }
+                
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function addProjectToGrid(title, desc, imgSrc) {
+            const grid = document.getElementById('uploadedProjectsGrid');
+            
+            const newItem = document.createElement('div');
+            newItem.classList.add('uploaded-item');
+            
+            newItem.innerHTML = `
+                <div class="uploaded-img" style="background-image: url('${imgSrc}')"></div>
+                <div class="uploaded-info">
+                    <h4>${title}</h4>
+                    <p>${desc}</p>
+                </div>
+            `;
+            
+            grid.appendChild(newItem);
+        }
     </script>
 </body>
 </html>
-
-

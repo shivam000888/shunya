@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shivam Vhatkar | Graphic Designer</title>
-    
-    <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -38,12 +35,10 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="portfolio-header">
             <h2 class="section-title">My <span>Portfolio</span></h2>
-            <!-- Upload Button -->
-            <button class="add-project-btn" onclick="openModal()">+ <span class="btn-text">Add New Project</span></button>
+            <button class="add-project-btn" onclick="openModal()">+</button>
         </div>
         
         <div class="carousel-container">
@@ -58,7 +53,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <!-- Slide 2 -->
                 <div class="carousel-slide">
                     <div class="portfolio-item">
@@ -69,18 +63,16 @@
                         </div>
                     </div>
                 </div>
-                
                 <!-- Slide 3 -->
                 <div class="carousel-slide">
                     <div class="portfolio-item">
-="portfolio-image">                        <div class📰</div>
+                        <div class="portfolio-image">📰</div>
                         <div class="portfolio-info">
                             <h3>Print Design</h3>
                             <p>Brochures, flyers and marketing materials.</p>
                         </div>
                     </div>
                 </div>
-                
                 <!-- Slide 4 -->
                 <div class="carousel-slide">
                     <div class="portfolio-item">
@@ -91,7 +83,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <!-- Slide 5 -->
                 <div class="carousel-slide">
                     <div class="portfolio-item">
@@ -102,7 +93,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <!-- Slide 6 -->
                 <div class="carousel-slide">
                     <div class="portfolio-item">
@@ -115,7 +105,6 @@
                 </div>
             </div>
             
-            <!-- Carousel Navigation -->
             <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
             <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
             
@@ -129,10 +118,8 @@
             </div>
         </div>
 
-        <!-- Uploaded Projects Grid -->
-        <div class="uploaded-projects-grid" id="uploadedProjectsGrid">
-            <!-- New uploaded projects will appear here dynamically -->
-        </div>
+        <!-- Uploaded Projects -->
+        <div class="uploaded-projects-grid" id="uploadedProjectsGrid"></div>
     </section>
 
     <section id="services" class="services">
@@ -169,7 +156,6 @@
                 <p class="contact-detail">📱 +91 7039915132</p>
                 <p class="contact-detail">📍 Maharashtra, Mumbai, Sion - 400017</p>
             </div>
-            
             <div class="contact-form-right">
                 <h2 class="section-title">Get In <span>Touch</span></h2>
                 <p>Ready to start your next project? Let's create something amazing together!</p>
@@ -189,11 +175,11 @@
             <form id="uploadForm">
                 <div class="form-group">
                     <label>Project Title</label>
-                    <input type="text" id="projectTitle" placeholder="e.g., Nature Flyer" required>
+                    <input type="text" id="projectTitle" required>
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <input type="text" id="projectDesc" placeholder="Short description" required>
+                    <input type="text" id="projectDesc" required>
                 </div>
                 <div class="form-group">
                     <label>Choose Image</label>
@@ -205,7 +191,7 @@
     </div>
 
     <script>
-        // --- Carousel Logic ---
+        // Carousel Logic
         let slideIndex = 1;
         let slideInterval;
         
@@ -229,17 +215,16 @@
         }
         
         function showSlides(n) {
-            let i;
             let slides = document.getElementsByClassName("carousel-slide");
             let dots = document.getElementsByClassName("dot");
             
             if (n > slides.length) {slideIndex = 1}
             if (n < 1) {slideIndex = slides.length}
             
-            for (i = 0; i < slides.length; i++) {
+            for (let i = 0; i < slides.length; i++) {
                 slides[i].classList.remove("active");
             }
-            for (i = 0; i < dots.length; i++) {
+            for (let i = 0; i < dots.length; i++) {
                 dots[i].classList.remove("active");
             }
             
@@ -249,22 +234,14 @@
         
         startAutoPlay();
 
-        // --- Upload Modal Logic ---
+        // Upload Modal Logic
         const modal = document.getElementById("uploadModal");
 
-        function openModal() {
-            modal.style.display = "flex";
-        }
+        function openModal() { modal.style.display = "flex"; }
+        function closeModal() { modal.style.display = "none"; }
 
-        function closeModal() {
-            modal.style.display = "none";
-        }
-
-        // Close modal if clicking outside
         window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+            if (event.target == modal) { modal.style.display = "none"; }
         }
 
         // Handle Form Submission
@@ -273,41 +250,28 @@
             
             const title = document.getElementById('projectTitle').value;
             const desc = document.getElementById('projectDesc').value;
-            const fileInput = document.getElementById('projectImage');
-            const file = fileInput.files[0];
+            const file = document.getElementById('projectImage').files[0];
 
             if (file) {
                 const reader = new FileReader();
-                
                 reader.onload = function(e) {
-                    const imgSrc = e.target.result;
-                    addProjectToGrid(title, desc, imgSrc);
-                    
-                    // Reset and close
+                    const grid = document.getElementById('uploadedProjectsGrid');
+                    const newItem = document.createElement('div');
+                    newItem.classList.add('uploaded-item');
+                    newItem.innerHTML = `
+                        <div class="uploaded-img" style="background-image: url('${e.target.result}')"></div>
+                        <div class="uploaded-info">
+                            <h4>${title}</h4>
+                            <p>${desc}</p>
+                        </div>
+                    `;
+                    grid.appendChild(newItem);
                     document.getElementById('uploadForm').reset();
                     closeModal();
                 }
-                
                 reader.readAsDataURL(file);
             }
         });
-
-        function addProjectToGrid(title, desc, imgSrc) {
-            const grid = document.getElementById('uploadedProjectsGrid');
-            
-            const newItem = document.createElement('div');
-            newItem.classList.add('uploaded-item');
-            
-            newItem.innerHTML = `
-                <div class="uploaded-img" style="background-image: url('${imgSrc}')"></div>
-                <div class="uploaded-info">
-                    <h4>${title}</h4>
-                    <p>${desc}</p>
-                </div>
-            `;
-            
-            grid.appendChild(newItem);
-        }
     </script>
 </body>
 </html>

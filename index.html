@@ -1,101 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shivam Vhatkar | Graphic Designer</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivam Vhatkar | Graphic Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <nav>
+        <div class="logo">Shivam<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-<!-- NAVBAR -->
-<nav>
-    <div class="logo">Shivam<span>.</span></div>
-</nav>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Shivam Vhatkar</h1>
+            <p>Graphic Designer & Creative Professional</p>
+            <a href="#portfolio" class="btn">View My Work</a>
+        </div>
+    </section>
 
-<!-- HERO SECTION -->
-<section class="hero">
-    <h1>Shivam Vhatkar</h1>
-    <p>Graphic Designer & Creative Professional</p>
-    <a href="#portfolio" class="btn">View My Work</a>
-</section>
+    <section id="about" class="about">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <div class="about-content">
+            <p>Hi, I'm Shivam Vhatkar, a passionate graphic designer dedicated to bringing creative visions to life. With a keen eye for detail and a love for visual storytelling, I help brands communicate their message through compelling design.</p>
+        </div>
+    </section>
 
-<!-- PORTFOLIO SECTION -->
-<section id="portfolio" class="portfolio">
-    <h2>My Portfolio</h2>
+    <section id="portfolio" class="portfolio">
+        <div class="portfolio-header">
+            <h2 class="section-title">My <span>Portfolio</span></h2>
+            <button class="add-project-btn" onclick="openModal()">+</button>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- Slide 1 -->
+                <div class="carousel-slide active">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">🎨</div>
+                        <div class="portfolio-info">
+                            <h3>Brand Identity</h3>
+                            <p>Complete logo design and brand guidelines.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">📱</div>
+                        <div class="portfolio-info">
+                            <h3>App UI Design</h3>
+                            <p>Modern mobile application interface.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">📰</div>
+                        <div class="portfolio-info">
+                            <h3>Print Design</h3>
+                            <p>Brochures, flyers and marketing materials.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">🎯</div>
+                        <div class="portfolio-info">
+                            <h3>Logo Design</h3>
+                            <p>Memorable logos for businesses.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 5 -->
+                <div class="carousel-slide">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">🖼️</div>
+                        <div class="portfolio-info">
+                            <h3>Social Media</h3>
+                            <p>Engaging visual content for social platforms.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 6 -->
+                <div class="carousel-slide">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">📦</div>
+                        <div class="portfolio-info">
+                            <h3>Packaging Design</h3>
+                            <p>Creative packaging solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
+            <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
+            
+            <div class="carousel-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+            </div>
+        </div>
 
-    <div class="scroll-buttons">
-        <button onclick="scrollLeft()">❮</button>
-        <button onclick="scrollRight()">❯</button>
+        <!-- Uploaded Projects -->
+        <div class="uploaded-projects-grid" id="uploadedProjectsGrid"></div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">My <span>Services</span></h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">✏️</div>
+                <h3>Logo Design</h3>
+                <p>Unique logos for your brand.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Brand Identity</h3>
+                <p>Complete brand development.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>UI/UX Design</h3>
+                <p>Web and app design.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🖥️</div>
+                <h3>Print Design</h3>
+                <p>Brochures and cards.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-info-left">
+                <h3>Shivam Vhatkar</h3>
+                <p class="contact-detail">📧 shivamvhatkar8@gmail.com</p>
+                <p class="contact-detail">📱 +91 7039915132</p>
+                <p class="contact-detail">📍 Maharashtra, Mumbai, Sion - 400017</p>
+            </div>
+            <div class="contact-form-right">
+                <h2 class="section-title">Get In <span>Touch</span></h2>
+                <p>Ready to start your next project? Let's create something amazing together!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Shivam Vhatkar. All rights reserved.</p>
+    </footer>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Upload New Project</h3>
+            <form id="uploadForm">
+                <div class="form-group">
+                    <label>Project Title</label>
+                    <input type="text" id="projectTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" id="projectDesc" required>
+                </div>
+                <div class="form-group">
+                    <label>Choose Image</label>
+                    <input type="file" id="projectImage" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn upload-btn">Upload Project</button>
+            </form>
+        </div>
     </div>
 
-    <div class="horizontal-scroll" id="portfolioScroll">
+    <script>
+        // Carousel Logic
+        let slideIndex = 1;
+        let slideInterval;
+        
+        function startAutoPlay() {
+            slideInterval = setInterval(() => { moveSlide(1); }, 4000);
+        }
+        
+        function moveSlide(n) {
+            showSlides(slideIndex += n);
+            resetTimer();
+        }
+        
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+            resetTimer();
+        }
+        
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startAutoPlay();
+        }
+        
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("carousel-slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].classList.add("active");
+        }
+        
+        startAutoPlay();
 
-        <div class="portfolio-card">
-            <div class="portfolio-image">🎨</div>
-            <h3>Brand Identity</h3>
-        </div>
+        // Upload Modal Logic
+        const modal = document.getElementById("uploadModal");
 
-        <div class="portfolio-card">
-            <div class="portfolio-image">📱</div>
-            <h3>App UI Design</h3>
-        </div>
+        function openModal() { modal.style.display = "flex"; }
+        function closeModal() { modal.style.display = "none"; }
 
-        <div class="portfolio-card">
-            <div class="portfolio-image">📰</div>
-            <h3>Print Design</h3>
-        </div>
+        window.onclick = function(event) {
+            if (event.target == modal) { modal.style.display = "none"; }
+        }
 
-        <div class="portfolio-card">
-            <div class="portfolio-image">🎯</div>
-            <h3>Logo Design</h3>
-        </div>
+        // Handle Form Submission
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('projectTitle').value;
+            const desc = document.getElementById('projectDesc').value;
+            const file = document.getElementById('projectImage').files[0];
 
-        <div class="portfolio-card">
-            <div class="portfolio-image">🖼️</div>
-            <h3>Social Media</h3>
-        </div>
-
-        <div class="portfolio-card">
-            <div class="portfolio-image">📦</div>
-            <h3>Packaging</h3>
-        </div>
-
-    </div>
-</section>
-
-<!-- CONTACT SECTION -->
-<section class="contact">
-    <h2>Contact Me</h2>
-    <p>📧 shivamvhatkar8@gmail.com</p>
-    <p>📱 +91 7039915132</p>
-    <p>📍 Mumbai, Maharashtra</p>
-</section>
-
-<footer>
-    <p>© 2025 Shivam Vhatkar. All Rights Reserved.</p>
-</footer>
-
-<script>
-const scrollContainer = document.getElementById("portfolioScroll");
-
-function scrollLeft() {
-    scrollContainer.scrollBy({
-        left: -300,
-        behavior: "smooth"
-    });
-}
-
-function scrollRight() {
-    scrollContainer.scrollBy({
-        left: 300,
-        behavior: "smooth"
-    });
-}
-</script>
-
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const grid = document.getElementById('uploadedProjectsGrid');
+                    const newItem = document.createElement('div');
+                    newItem.classList.add('uploaded-item');
+                    newItem.innerHTML = `
+                        <div class="uploaded-img" style="background-image: url('${e.target.result}')"></div>
+                        <div class="uploaded-info">
+                            <h4>${title}</h4>
+                            <p>${desc}</p>
+                        </div>
+                    `;
+                    grid.appendChild(newItem);
+                    document.getElementById('uploadForm').reset();
+                    closeModal();
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
 </html>
